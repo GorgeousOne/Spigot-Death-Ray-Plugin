@@ -1,3 +1,8 @@
 name: DeathRay
 version: '${project.version}'
-main: me.gorgeousone.deathray.DeathRay
+main: me.gorgeousone.deathray.DeathRayPlugin
+
+commands:
+    death:
+        description: literal annihilation
+        default: op

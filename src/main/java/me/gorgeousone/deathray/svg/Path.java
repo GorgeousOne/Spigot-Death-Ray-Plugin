@@ -29,4 +29,27 @@ public class Path {
 	public void setWidth(double width) {
 		this.width = width;
 	}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	public List<Vector> samplePoints(double density) {
+		List<Vector> points = new ArrayList<>();
+		
+		for (int i = 0; i < nodes.size() - 1; i++) {
+			
+			Vector start = nodes.get(i);
+			Vector end = nodes.get(i + 1);
+			
+			double distance = start.distance(end);
+			int pointCount = (int) (distance * density);
+			double step = 1d / pointCount;
+			
+			for (int j = 0; j < pointCount; j++) {
+				points.add(start.clone().multiply(1 - j * step).add(end.clone().multiply(j * step)));
+			}
+		}
+		return points;
+	}
 }
